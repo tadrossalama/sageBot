@@ -2,18 +2,18 @@ from pathlib import Path
 import os
 import sys
 import faiss
+import pickle
+from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import FAISS
 from langchain.embeddings import OpenAIEmbeddings
-import pickle
-from langchain import OpenAI, LLMChain
 from langchain.prompts import Prompt
 from langchain.chat_models import ChatOpenAI
 import streamlit as st
 from streamlit_chat import message
 from langchain.chains import ConversationChain
-from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
+
 
 
 def main():
@@ -42,7 +42,6 @@ if __name__ == "__main__":
         st.write("If you don't have an API key, you can get one [here](https://beta.openai.com/)")
         key = st.text_input("API Key")
         os.environ["OPENAI_API_KEY"] = key
-
 
     while key != "":
         chain, store = main()
